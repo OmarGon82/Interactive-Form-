@@ -25,7 +25,7 @@ $('#design').change(function () {
         $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
         $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').show();
         $('#color option[value="tomato"]').attr('selected',true);
-	    $('#color option[value="cornflower blue"]').atter('selected',false);
+        $('#color option[value="cornflower blue"]').attr('selected',false);
     } 
     
 })
