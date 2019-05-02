@@ -12,12 +12,14 @@ $('#title').change(function() {
 
 $('#design').change(function () {
     
-if ( $(this).val() === "js puns") 
-    $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
-    $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').show();
-if ($(this).val() === "heart js") 
-    $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
-    $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').show();
+    if ( $(this).val() === "js puns") {
+        $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
+        $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').show();
+    }
+    if ($(this).val() === "heart js") {
+        $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
+        $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').show();
+    }
 })
 
 // if jsPun is selected 
