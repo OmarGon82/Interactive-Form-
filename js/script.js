@@ -32,7 +32,9 @@ $('#design').change(function () {
         $('#color option[value="tomato"]').attr('selected',true);
         $('#color option[value="cornflower blue"]').attr('selected',false);
         $('#color option[value="no color"]').attr('selected', false);
-    } else {$selectTheme.hide();}
+    } else {
+        $selectTheme.hide();
+    }
     
 })
 
