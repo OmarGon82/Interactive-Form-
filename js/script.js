@@ -37,5 +37,21 @@ $('#design').change(function () {
     }
     
 })
+$('.activities').append('<div id="total"></div>');
+$('#total').hide();
+const total = 0;
+const $checboxes =$("label input");
+const priceAll = 200;
+const priceJsFrameworks = 100;
 
-const $checboxes =$("")
+$checboxes.on('click', function() {
+    if($('input[name="all"]').prop("checked") === true) {
+        $('#total').html(`total: $${priceAll}`).show();
+    }
+    if($('input[name="js-frameworks"]').prop("checked") === true) {
+        $('#total').html(`total: $${priceAll + priceJsFrameworks}`).show();
+    }
+    if($(':checked').length === 0) {
+        $('#total').hide();
+    }
+})
