@@ -17,7 +17,7 @@ $('#design').change(function () {
         $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
         $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').show();
         $('#color option[value="cornflower blue"]').attr('selected', true);
-		$('#color option[value="tomato"]').attr('selected', false);
+	    $('#color option[value="tomato"]').attr('selected', false);
     } else {
         $('#color').children().hide()
     }
