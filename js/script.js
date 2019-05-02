@@ -16,16 +16,16 @@ $('#design').change(function () {
     if ( $(this).val() === "js puns") {
         $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
         $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').show();
-        $('#color option[value="cornflower blue"]').attr('selected', true);
-	    $('#color option[value="tomato"]').attr('selected', false);
+        $('#color option[value="cornflower blue').attr('selected', true);
+        $('#color option[value="tomato"]').attr('selected', false);
     } else {
         $('#color').children().hide()
     }
     if ($(this).val() === "heart js") {
         $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
         $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').show();
-        $('#color option[value="tomato"]').attr('selected', true);
-		$('#color option[value="cornflower blue"]').attr('selected', false);
+        $('#color option[value="tomato"]').attr('selected',true);
+		$('#color option[value="cornflower blue"]').atter('selected',false);
     } 
     
 })
