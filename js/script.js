@@ -39,19 +39,42 @@ $('#design').change(function () {
 })
 $('.activities').append('<div id="total"></div>');
 $('#total').hide();
-const total = 0;
+
 const $checboxes =$("label input");
-const priceAll = 200;
-const priceJsFrameworks = 100;
+let total = 0;
+const $all = $('input[name="all"]').text().match(/\d+/);
+console.log($all)
+const $jsFrame = $('input[name="js-frameworks"]')
+
+
 
 $checboxes.on('click', function() {
     if($('input[name="all"]').prop("checked") === true) {
-        $('#total').html(`total: $${priceAll}`).show();
+        $('#total').html(`total: $${}`).show();
+        alert("mainConf clicked")
     }
     if($('input[name="js-frameworks"]').prop("checked") === true) {
-        $('#total').html(`total: $${priceAll + priceJsFrameworks}`).show();
+        $('#total').html(`total: $${}`).show();
+        
     }
-    if($(':checked').length === 0) {
-        $('#total').hide();
+    if($('input[name="js-libs"]').prop("checked") === true) {
+        $('#total').html(`total: $${}`).show();
+        
+    }
+    if($('input[name="express"]').prop("checked") === true) {
+        $('#total').html(`total: $${}`).show();
+        
+    }
+    if($('input[name="node"]').prop("checked") === true) {
+        $('#total').html(`total: $${}`).show();
+        
+    }
+    if($('input[name="build-tools"]').prop("checked") === true) {
+        $('#total').html(`total: $${}`).show();
+        
+    }
+    if($('input[name="npm"]').prop("checked") === true) {
+        $('#total').html(`total: $${}`).show();
+        
     }
 })
