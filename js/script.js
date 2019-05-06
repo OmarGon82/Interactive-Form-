@@ -40,9 +40,13 @@ $('#design').change(function () {
 $('.activities').append('<div id="total"></div>');
 $('#total').hide();
 
-const $checboxes = $(".activities input");
-let total = 0;
+const $checkboxes = $(".activities input");
 
+let total = 0;
+// const textOfClicked = clicked.parentElement.textContent;
+// const dollarAmount = textOfClicked.match(/\d{3}/);
+// const cost = parseInt(dollarAmount)
+// const timeDate = textOfClicked.match(/\w+\s\d\w{2}-\d\d?\w{2}/);
 
 $(".activities").change((e)=>{
     const clicked = e.target;
@@ -61,41 +65,15 @@ $(".activities").change((e)=>{
     }
     $('#total').html(`total:$${total}`).show();
 
-    for( i = 0; i < $checboxes.length; i++) {
-        console.log($checboxes[i]);
-    }
-});
+
+    for (let i = 0; i < $checkboxes.length; i++) {
+        if ($checkboxes[i] == timeDate) {
+            $checkboxes[i].attr('disabled',true);
+        } 
+        if ($checkboxes[i] == timeDate) {
+            $checkboxes[i].attr('enabled',true);
+        }
+      }
+})
 
 
-
-
-// $checboxes.on('click', function() {
-//     if($(this).prop("checked") === true) {
-//         $('#total').html(`total: `).show();
-       
-//     }
-//     if($('input[name="js-frameworks"]').prop("checked") === true) {
-//         $('#total').html(`total: `).show();
-        
-//     }
-//     if($('input[name="js-libs"]').prop("checked") === true) {
-//         $('#total').html(`total: $$`).show();
-        
-//     }
-//     if($('input[name="express"]').prop("checked") === true) {
-//         $('#total').html(`total: $$`).show();
-        
-//     }
-//     if($('input[name="node"]').prop("checked") === true) {
-//         $('#total').html(`total: $$`).show();
-        
-//     }
-//     if($('input[name="build-tools"]').prop("checked") === true) {
-//         $('#total').html(`total: $$`).show();
-        
-//     }
-//     if($('input[name="npm"]').prop("checked") === true) {
-//         $('#total').html(`total: $$`).show();
-        
-//     }
-// })
