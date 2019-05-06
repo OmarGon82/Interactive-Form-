@@ -40,41 +40,62 @@ $('#design').change(function () {
 $('.activities').append('<div id="total"></div>');
 $('#total').hide();
 
-const $checboxes =$("label input");
+const $checboxes = $(".activities input");
 let total = 0;
-const $all = $('input[name="all"]').text().match(/\d+/);
-console.log($all)
-const $jsFrame = $('input[name="js-frameworks"]')
+
+
+$(".activities").change((e)=>{
+    const clicked = e.target;
+    const textOfClicked = clicked.parentElement.textContent;
+    const dollarAmount = textOfClicked.match(/\d{3}/);
+    const cost = parseInt(dollarAmount)
+    const timeDate = textOfClicked.match(/\w+\s\d\w{2}-\d\d?\w{2}/);
+    
+    
+    if( $(clicked).prop("checked") === true) {
+        total += cost;
+        
+    } 
+    if ( $(clicked).prop("checked") === false) {
+        total -= cost;
+    }
+    $('#total').html(`total:$${total}`).show();
+
+    for( i = 0; i < $checboxes.length; i++) {
+        console.log($checboxes[i]);
+    }
+});
 
 
 
-$checboxes.on('click', function() {
-    if($('input[name="all"]').prop("checked") === true) {
-        $('#total').html(`total: $${}`).show();
-        alert("mainConf clicked")
-    }
-    if($('input[name="js-frameworks"]').prop("checked") === true) {
-        $('#total').html(`total: $${}`).show();
+
+// $checboxes.on('click', function() {
+//     if($(this).prop("checked") === true) {
+//         $('#total').html(`total: `).show();
+       
+//     }
+//     if($('input[name="js-frameworks"]').prop("checked") === true) {
+//         $('#total').html(`total: `).show();
         
-    }
-    if($('input[name="js-libs"]').prop("checked") === true) {
-        $('#total').html(`total: $${}`).show();
+//     }
+//     if($('input[name="js-libs"]').prop("checked") === true) {
+//         $('#total').html(`total: $$`).show();
         
-    }
-    if($('input[name="express"]').prop("checked") === true) {
-        $('#total').html(`total: $${}`).show();
+//     }
+//     if($('input[name="express"]').prop("checked") === true) {
+//         $('#total').html(`total: $$`).show();
         
-    }
-    if($('input[name="node"]').prop("checked") === true) {
-        $('#total').html(`total: $${}`).show();
+//     }
+//     if($('input[name="node"]').prop("checked") === true) {
+//         $('#total').html(`total: $$`).show();
         
-    }
-    if($('input[name="build-tools"]').prop("checked") === true) {
-        $('#total').html(`total: $${}`).show();
+//     }
+//     if($('input[name="build-tools"]').prop("checked") === true) {
+//         $('#total').html(`total: $$`).show();
         
-    }
-    if($('input[name="npm"]').prop("checked") === true) {
-        $('#total').html(`total: $${}`).show();
+//     }
+//     if($('input[name="npm"]').prop("checked") === true) {
+//         $('#total').html(`total: $$`).show();
         
-    }
-})
+//     }
+// })
