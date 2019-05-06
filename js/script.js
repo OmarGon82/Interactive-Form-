@@ -1,3 +1,6 @@
+let total = 0;
+const $checkboxes = $(".activities input");
+
 $('#name').focus();
 $('#other-title').hide();
 
@@ -40,13 +43,6 @@ $('#design').change(function () {
 $('.activities').append('<div id="total"></div>');
 $('#total').hide();
 
-const $checkboxes = $(".activities input");
-
-let total = 0;
-// const textOfClicked = clicked.parentElement.textContent;
-// const dollarAmount = textOfClicked.match(/\d{3}/);
-// const cost = parseInt(dollarAmount)
-// const timeDate = textOfClicked.match(/\w+\s\d\w{2}-\d\d?\w{2}/);
 
 $(".activities").change((e)=>{
     const clicked = e.target;
@@ -75,5 +71,8 @@ $(".activities").change((e)=>{
         }
       }
 })
+
+
+
 
 
