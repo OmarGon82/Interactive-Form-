@@ -1,5 +1,6 @@
 let total = 0;
-const $checkboxes = $(".activities input");
+const $checkboxes = $(".activities input")
+
 
 $('#name').focus();
 $('#other-title').hide();
@@ -61,17 +62,22 @@ $(".activities").change((e)=>{
     }
     $('#total').html(`total:$${total}`).show();
 
-
     for (let i = 0; i < $checkboxes.length; i++) {
-        if ($checkboxes[i] == timeDate) {
-            $checkboxes[i].attr('disabled',true);
-        } 
-        if ($checkboxes[i] == timeDate) {
-            $checkboxes[i].attr('enabled',true);
+            const textOfinput = $checkboxes[i].parentElement.textContent
+            if(textOfinput.includes(timeDate) && textOfinput !== timeDate) {
+                if($(clicked).prop("checked") === true) {
+                    $checkboxes[i].prop('disable',true)
+                } else {
+                    $checkboxes[i].prop('disable',false)
+                }
+            }
         }
-      }
+      
+    
 })
-
+/* You don't want to see if the timeDate == $checkboxes[i].  You want to see if $checkboxes[i]'s parent 
+label's text `.includes()` the substring of the day and time of the currently clicked input.  
+*/ 
 
 
 
