@@ -52,7 +52,6 @@ $(".activities").change((e)=>{
     const cost = parseInt(dollarAmount)
     const timeDate = textOfClicked.match(/\w+\s\d\w{2}-\d\d?\w{2}/);
     
-    
     if( $(clicked).prop("checked") === true) {
         total += cost;
         
@@ -66,18 +65,15 @@ $(".activities").change((e)=>{
             const textOfinput = $checkboxes[i].parentElement.textContent
             if(textOfinput.includes(timeDate) && textOfinput !== timeDate) {
                 if($(clicked).prop("checked") === true) {
-                    $checkboxes[i].prop('disable',true)
+                    $checkboxes[i].disabled = true;
                 } else {
-                    $checkboxes[i].prop('disable',false)
-                }
+                   $checkboxes[i].disabled = false}
             }
         }
       
     
 })
-/* You don't want to see if the timeDate == $checkboxes[i].  You want to see if $checkboxes[i]'s parent 
-label's text `.includes()` the substring of the day and time of the currently clicked input.  
-*/ 
+
 
 
 
