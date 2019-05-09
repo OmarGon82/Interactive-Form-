@@ -75,18 +75,6 @@ $(".activities").change((e)=>{
     } 
 });
 
-// for (let i = 0; i < $checkboxes.length; i++) {
-//     const textOfinput = $checkboxes[i].parentElement.textContent
-//     if(textOfinput.includes(timeDate) && textOfinput !== timeDate) {
-//         if($(clicked).prop("checked") === true) {
-//             $checkboxes[i].disabled = true;
-//         } 
-//         else {
-//            $checkboxes[i].disable = false;
-//         }
-// }
-
-// } 
 
 
 
