@@ -52,7 +52,7 @@ $(".activities").change((e)=>{
     const cost = parseInt(dollarAmount)
     const timeDate = textOfClicked.match(/\w+\s\d\w{2}-\d\d?\w{2}/);
     
-    if( $(clicked).prop("checked") === true) {
+    if($(clicked).prop("checked") === true) {
         total += cost;
         
     } 
@@ -62,19 +62,31 @@ $(".activities").change((e)=>{
     $('#total').html(`total:$${total}`).show();
 
     for (let i = 0; i < $checkboxes.length; i++) {
-            const textOfinput = $checkboxes[i].parentElement.textContent
+        const textOfinput = $checkboxes[i].parentElement.textContent
             if(textOfinput.includes(timeDate) && textOfinput !== timeDate) {
-                if($(clicked).prop("checked") === true) {
+                if($($checkboxes[i]).prop("checked") === false) {
                     $checkboxes[i].disabled = true;
-                } else {
-                   $checkboxes[i].disabled = false}
+                } 
+                else {
+                    $checkboxes[i].disable = true;
             }
         }
-      
-    
-})
 
+    } 
+});
 
+// for (let i = 0; i < $checkboxes.length; i++) {
+//     const textOfinput = $checkboxes[i].parentElement.textContent
+//     if(textOfinput.includes(timeDate) && textOfinput !== timeDate) {
+//         if($(clicked).prop("checked") === true) {
+//             $checkboxes[i].disabled = true;
+//         } 
+//         else {
+//            $checkboxes[i].disable = false;
+//         }
+// }
+
+// } 
 
 
 
