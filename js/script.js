@@ -1,6 +1,7 @@
 let total = 0;
 const $checkboxes = $(".activities input")
 
+// const selectPayment = $('#payment option').eq(0).hide();
 
 $('#name').focus();
 $('#other-title').hide();
@@ -63,15 +64,16 @@ $(".activities").change((e)=>{
 
     if($(clicked).prop("checked") === true) {
         for (let i = 0; i < $checkboxes.length; i++) {
-            const textOfinput = $checkboxes[i].parentElement.textContent
+        const textOfinput = $checkboxes[i].parentElement.textContent
         if(textOfinput.includes(timeDate) && clicked !== $checkboxes[i]){
             $checkboxes[i].disabled = true;
             } else {
-                $checkboxes[i].disabled = false;
-            }
+        $checkboxes[i].disabled = false;
+    }
         }
      
       } 
 
 });
 
+$("#payment").find("option").eq(0).remove();
