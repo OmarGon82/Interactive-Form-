@@ -53,26 +53,22 @@ $(".activities").change((e)=>{
     const cost = parseInt(dollarAmount)
     const timeDate = textOfClicked.match(/\w+\s\d\w{2}-\d\d?\w{2}/);
     
-    if($(clicked).prop("checked") === true) {
-        total += cost;
-        
-    } 
-    if ( $(clicked).prop("checked") === false) {
-        total -= cost;
-    }
+    //If the property was checked add the cost, else cost times -1(its the same as subtracting from the cost)
+    total += $(clicked).prop("checked") ? cost : cost * -1;
     $('#total').html(`total:$${total}`).show();
 
-    if($(clicked).prop("checked") === true) {
-        for (let i = 0; i < $checkboxes.length; i++) {
-        const textOfinput = $checkboxes[i].parentElement.textContent
-        if(textOfinput.includes(timeDate) && clicked !== $checkboxes[i]){
-            $checkboxes[i].disabled = true;
-            } else {
-        $checkboxes[i].disabled = false;
-    }
+    for (let i = 0; i < $checkboxes.length; i++) {
+    const textOfinput = $checkboxes[i].parentElement.textContent
+    
+    //If the activity is a conflicting activity and wasn't the one clicked
+    if(textOfinput.includes(timeDate) && clicked !== $checkboxes[i]){
+        
+        //toggle the disabled property.If it was false then it will be true and vice versa.
+        $checkboxes[i].disabled = !($checkboxes[i].disabled);
         }
+    }
      
-      } 
+      
 
 });
 
