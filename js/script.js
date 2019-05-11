@@ -61,21 +61,17 @@ $(".activities").change((e)=>{
     }
     $('#total').html(`total:$${total}`).show();
 
-    for (let i = 0; i < $checkboxes.length; i++) {
-        const textOfinput = $checkboxes[i].parentElement.textContent
-            if(textOfinput.includes(timeDate) && clicked !== $checkboxes[i]) {
-                if($($checkboxes[i]).prop("checked") === false) {
-                   $checkboxes[i].disabled = true;
-                } 
-                else {
-                    $checkboxes[i].disabled = false;
-                  
-                } 
+    if($(clicked).prop("checked") === true) {
+        for (let i = 0; i < $checkboxes.length; i++) {
+            const textOfinput = $checkboxes[i].parentElement.textContent
+        if(textOfinput.includes(timeDate) && clicked !== $checkboxes[i]){
+            $checkboxes[i].disabled = true;
+            } else {
+                $checkboxes[i].disabled = false;
+            }
         }
+     
+      } 
 
-    } 
 });
-
-
-
 
