@@ -1,7 +1,11 @@
 let total = 0;
 const $checkboxes = $(".activities input")
+const $paymentOptions = $("#payment option");
+const $creditCard = $('#credit-card');
+const $payPal = $('fieldset div:nth-child(5)').attr("id", "paypal");
+const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
 
-// const selectPayment = $('#payment option').eq(0).hide();
+
 
 $('#name').focus();
 $('#other-title').hide();
@@ -72,4 +76,28 @@ $(".activities").change((e)=>{
 
 });
 
+
 $("#payment").find("option").eq(0).remove();
+
+$payPal.hide();
+$bitCoin.hide();
+$("#payment").change( function() {
+    $creditCard.show();
+    const $paymentMethod = $(this).val()
+    if ( $paymentMethod === "paypal" ) {
+        $payPal.show()
+        $bitCoin.hide()
+        $creditCard.hide()
+    } 
+    if ( $paymentMethod === "bitcoin") {
+        $bitCoin.show()
+        $payPal.hide()
+        $creditCard.hide()
+    }
+    if ( $paymentMethod === "credit card") {
+        $bitCoin.hide()
+        $payPal.hide()
+        $creditCard.show()
+    }
+
+})
