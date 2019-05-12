@@ -4,8 +4,9 @@ const $paymentOptions = $("#payment option");
 const $creditCard = $('#credit-card');
 const $payPal = $('fieldset div:nth-child(5)').attr("id", "paypal");
 const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
-
-
+const $invalidName = $("<span></span>").text("Can only contain letters a-z in lowercase")
+$invalidName.insertAfter("#name")
+$invalidName.hide();
 
 $('#name').focus();
 $('#other-title').hide();
@@ -83,21 +84,83 @@ $payPal.hide();
 $bitCoin.hide();
 $("#payment").change( function() {
     $creditCard.show();
-    const $paymentMethod = $(this).val()
+    const $paymentMethod = $(this).val();
     if ( $paymentMethod === "paypal" ) {
-        $payPal.show()
-        $bitCoin.hide()
-        $creditCard.hide()
+        $payPal.show();
+        $bitCoin.hide();
+        $creditCard.hide();
     } 
     if ( $paymentMethod === "bitcoin") {
-        $bitCoin.show()
-        $payPal.hide()
-        $creditCard.hide()
+        $bitCoin.show();
+        $payPal.hide();
+        $creditCard.hide();
     }
     if ( $paymentMethod === "credit card") {
-        $bitCoin.hide()
-        $payPal.hide()
-        $creditCard.show()
+        $bitCoin.hide();
+        $payPal.hide();
+        $creditCard.show();
     }
 
 })
+
+function validNames() {
+    const name = $('#name');
+    if (name.val().length > 0) {
+        name.css('borderColor', '#cldeeb');
+        return true;
+    }
+    name.css('borderColor', 'red');
+    return false;
+}
+
+function validEmail() {
+    const email = $('#mail');
+    if(email.val().lenght > 0) {
+        name.css('borderColor', '#cldeeb');
+        return true;
+    }
+    name.css('borderColor', 'red');
+    return false;
+}
+
+function validActivity() {
+    const activities = $('#activities');
+    if(activities.prop("checked")) {
+        activities.css('borderColor', '#cldeeb');
+        return true;
+    }
+    activities.css('borderColor', 'none');
+    return false;
+}
+
+function validCreditCardNum() {
+    const creditCardNum = $('#cc-num');
+    if(creditCardNum.val().lenght > 0) {
+        creditCardNum.css('borderColor', '#cldeeb');
+        return true;
+    }
+    creditCardNum.css('borderColor', 'red');
+    return false;
+}
+
+function validZipCode() {
+    const creditCardNum = $('#zip');
+    if(creditCardNum.val().lenght > 0) {
+        creditCardNum.css('borderColor', '#cldeeb');
+        return true;
+    }
+    creditCardNum.css('borderColor', 'red');
+    return false;
+}
+function validCCV() {
+    const ccv = $('#ccv');
+    if(ccv.val().lenght > 0) {
+        ccv.css('borderColor', '#cldeeb');
+        return true;
+    }
+    ccv.css('borderColor', 'red');
+    return false;
+}
+function validateForm(params) {
+    const validationResults = [];
+}
