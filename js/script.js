@@ -103,8 +103,14 @@ $("#payment").change( function() {
 
 })
 
-function validNames() {
-    const name = $('#name');
+const $name = $('#name');
+const $email = $('#mail');
+const $activities = $('#activities');
+const $creditCardNum = $('#cc-num');
+const $zipNum = $('#zip');
+const $ccv = $('#ccv');
+
+function checkName() {
     if (name.val().length > 0) {
         name.css('borderColor', '#cldeeb');
         return true;
@@ -112,55 +118,72 @@ function validNames() {
     name.css('borderColor', 'red');
     return false;
 }
+    
 
-function validEmail() {
-    const email = $('#mail');
-    if(email.val().lenght > 0) {
+function checkEmail() {
+    if(email.val().length > 0) {
         name.css('borderColor', '#cldeeb');
         return true;
     }
     name.css('borderColor', 'red');
     return false;
 }
+    
 
-function validActivity() {
-    const activities = $('#activities');
-    if(activities.prop("checked")) {
-        activities.css('borderColor', '#cldeeb');
+function checkActivity() {
+    if(total.val().length > 0) {
+        activities.css('border', '#cldeeb');
         return true;
     }
     activities.css('borderColor', 'none');
     return false;
 }
+    
 
-function validCreditCardNum() {
-    const creditCardNum = $('#cc-num');
-    if(creditCardNum.val().lenght > 0) {
+function checkCreditCardNum() {
+    if(creditCardNum.val().length > 0) {
         creditCardNum.css('borderColor', '#cldeeb');
         return true;
     }
     creditCardNum.css('borderColor', 'red');
     return false;
 }
+    
 
-function validZipCode() {
-    const creditCardNum = $('#zip');
-    if(creditCardNum.val().lenght > 0) {
-        creditCardNum.css('borderColor', '#cldeeb');
+function checkZipCode() {
+    if(zipNum.val().length > 0) {
+        zipNum.css('borderColor', '#cldeeb');
         return true;
     }
     creditCardNum.css('borderColor', 'red');
     return false;
 }
-function validCCV() {
-    const ccv = $('#ccv');
-    if(ccv.val().lenght > 0) {
+    
+function checkCCV() {
+    if(ccv.val().length > 0) {
         ccv.css('borderColor', '#cldeeb');
         return true;
     }
     ccv.css('borderColor', 'red');
     return false;
 }
-function validateForm(params) {
-    const validationResults = [];
+    
+function validateForm() {
+    function validName($name) {
+        return /^[a-z]+$/.test($name);
+      }
+    function validEmail($email) {
+    return /^[^@]+@[^@.]+\.[a-z]+$/i.test($email);
+      }
+    function validCreditCardNum($creditCardNum) {
+    return /\d{13,16}/.test($creditCardNum);
+      }
+    function validZipCode($zipNum) {
+    return /\d{5}/.test($zipNum);
+      }
+    function validCcV($ccv) {
+    return /\d{3}/.test($ccv);
+      }
+
 }
+
