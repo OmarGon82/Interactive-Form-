@@ -169,21 +169,30 @@ function checkCCV() {
 }
     
 function validateForm() {
-    function validName($name) {
-        return /^[a-z]+$/.test($name);
-      }
-    function validEmail($email) {
-    return /^[^@]+@[^@.]+\.[a-z]+$/i.test($email);
-      }
-    function validCreditCardNum($creditCardNum) {
-    return /\d{13,16}/.test($creditCardNum);
-      }
-    function validZipCode($zipNum) {
-    return /\d{5}/.test($zipNum);
-      }
-    function validCcV($ccv) {
-    return /\d{3}/.test($ccv);
-      }
+    function validName(checkName) {
+        return /^[a-z]+$/.test(checkName);
+        }
+    
+    function validEmail(checkEmail) {
+        return /^[^@]+@[^@.]+\.[a-z]+$/i.test(checkEmail);
+        }
+    
+    // function validActivity(checkActivity) {
+    //     return true
+    //     }
+      
+    
+    function validCreditCardNum(checkCreditCardNum) {
+        return /\d{13,16}/.test(checkCreditCardNum);
+        }
+    
+    function validZipCode(checkZipCode) {
+        return /\d{5}/.test(checkZipCode);
+        }
+    
+    function validCcV(checkCCV) {
+        return /\d{3}/.test(checkCCV);
+        }
 
 }
 
