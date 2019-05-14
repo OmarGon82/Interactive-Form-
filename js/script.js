@@ -105,10 +105,10 @@ $("#payment").change( function() {
 
 const $name = $('#name');
 const $email = $('#mail');
-const $activities = $(".activities").val(0);
-const $creditCardNum = $('#cc-num').val("1234 1234 1234 1234 7");
-const $zipNum = $('#zip').val(123456)
-const $cvv = $('#cvv').val("1234");
+const $activities = total;
+const $creditCardNum = $('#cc-num');
+const $zipNum = $('#zip');
+const $cvv = $('#cvv');
 
 function validName(name) {
     if (name.val() === "" || /\d+/.test(name.val())) {
@@ -131,45 +131,44 @@ function validEmail(email) {
 
 function validActivity(activities) {
     if(activities.val() === 0) {
-        // activities.css('border', 'red');
-        alert("click something")
+        activities.css('border', 'red');
+     
         return false;
     }
     activities.css('borderColor', '#cldeeb');
     return true;
 }
-validActivity($activities)
-console.log($activities.val())
+
+
 function validCreditCardNum(creditCardNum) {
-    if(creditCardNum.val() === "" || !(/(?:\d[ -]*?){13,16}\b/.test(creditCardNum.val())) ) {
+    if(creditCardNum.val() === "" || !(/^(?:\d[ -]*?){13,16}$/.test(creditCardNum.val())) ) {
         creditCardNum.css('borderColor', 'red');
         return false;
     }
     creditCardNum.css('borderColor', '#cldeeb');
     return true;
 }
-console.log(!(/(?:\d[ -]*?){13,16}\b/.test($creditCardNum.val())))
-validCreditCardNum($creditCardNum)
+
+
     
 
 function validZipCode(zipNum) {
-    if(zipNum.val() === "" || !(/(\d{5})/g.test(zipNum.val())) ) {
+    if(zipNum.val() === "" || !(/^(\d{5})$/g.test(zipNum.val())) ) {
         zipNum.css('borderColor', 'red' );
         return false;
     }
     zipNum.css('borderColor', '#cldeeb');
     return true;
 }
-validZipCode($zipNum) 
+
 
 function validCVV(cvv) {
-    if(cvv.val() === "" || !(/\d{3}/g.test(cvv.val())) ) {
+    if(cvv.val() === "" || !(/^\d{3}$/g.test(cvv.val())) ) {
         cvv.css('borderColor', 'red' );
         return false;
     }
     cvv.css('borderColor', '#cldeeb');
     return true;
 }
-    
-validCVV($cvv)
+
 
