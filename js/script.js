@@ -105,94 +105,71 @@ $("#payment").change( function() {
 
 const $name = $('#name');
 const $email = $('#mail');
-const $activities = $('#activities');
-const $creditCardNum = $('#cc-num');
-const $zipNum = $('#zip');
-const $ccv = $('#ccv');
+const $activities = $(".activities").val(0);
+const $creditCardNum = $('#cc-num').val("1234 1234 1234 1234 7");
+const $zipNum = $('#zip').val(123456)
+const $cvv = $('#cvv').val("1234");
 
-function checkName() {
-    if (name.val().length > 0) {
-        name.css('borderColor', '#cldeeb');
-        return true;
+function validName(name) {
+    if (name.val() === "" || /\d+/.test(name.val())) {
+      name.css('borderColor', 'red');
+        return false;
     }
-    name.css('borderColor', 'red');
-    return false;
+    name.css('borderColor', '#cldeeb');
+    return true;
 }
+
+function validEmail(email) {
+    if (email.val() === "" || !(/(\w+@\w+)(.com|.net|.co)/.test(email.val())) ) {
+        email.css('borderColor', 'red');
+          return false;
+      }
+      email.css('borderColor', '#cldeeb');
+      return true;
+}
+
+
+function validActivity(activities) {
+    if(activities.val() === 0) {
+        // activities.css('border', 'red');
+        alert("click something")
+        return false;
+    }
+    activities.css('borderColor', '#cldeeb');
+    return true;
+}
+validActivity($activities)
+console.log($activities.val())
+function validCreditCardNum(creditCardNum) {
+    if(creditCardNum.val() === "" || !(/(?:\d[ -]*?){13,16}\b/.test(creditCardNum.val())) ) {
+        creditCardNum.css('borderColor', 'red');
+        return false;
+    }
+    creditCardNum.css('borderColor', '#cldeeb');
+    return true;
+}
+console.log(!(/(?:\d[ -]*?){13,16}\b/.test($creditCardNum.val())))
+validCreditCardNum($creditCardNum)
     
 
-function checkEmail() {
-    if(email.val().length > 0) {
-        name.css('borderColor', '#cldeeb');
-        return true;
+function validZipCode(zipNum) {
+    if(zipNum.val() === "" || !(/(\d{5})/g.test(zipNum.val())) ) {
+        zipNum.css('borderColor', 'red' );
+        return false;
     }
-    name.css('borderColor', 'red');
-    return false;
+    zipNum.css('borderColor', '#cldeeb');
+    return true;
 }
-    
+validZipCode($zipNum) 
 
-function checkActivity() {
-    if(total.val().length > 0) {
-        activities.css('border', '#cldeeb');
-        return true;
+function validCVV(cvv) {
+    if(cvv.val() === "" || !(/\d{3}/g.test(cvv.val())) ) {
+        cvv.css('borderColor', 'red' );
+        return false;
     }
-    activities.css('borderColor', 'none');
-    return false;
+    cvv.css('borderColor', '#cldeeb');
+    return true;
 }
     
-
-function checkCreditCardNum() {
-    if(creditCardNum.val().length > 0) {
-        creditCardNum.css('borderColor', '#cldeeb');
-        return true;
-    }
-    creditCardNum.css('borderColor', 'red');
-    return false;
-}
-    
-
-function checkZipCode() {
-    if(zipNum.val().length > 0) {
-        zipNum.css('borderColor', '#cldeeb');
-        return true;
-    }
-    creditCardNum.css('borderColor', 'red');
-    return false;
-}
-    
-function checkCCV() {
-    if(ccv.val().length > 0) {
-        ccv.css('borderColor', '#cldeeb');
-        return true;
-    }
-    ccv.css('borderColor', 'red');
-    return false;
-}
-    
-function validateForm() {
-    function validName(checkName) {
-        return /^[a-z]+$/.test(checkName);
-        }
-    
-    function validEmail(checkEmail) {
-        return /^[^@]+@[^@.]+\.[a-z]+$/i.test(checkEmail);
-        }
-    
-    // function validActivity(checkActivity) {
-    //     return true
-    //     }
-      
-    
-    function validCreditCardNum(checkCreditCardNum) {
-        return /\d{13,16}/.test(checkCreditCardNum);
-        }
-    
-    function validZipCode(checkZipCode) {
-        return /\d{5}/.test(checkZipCode);
-        }
-    
-    function validCcV(checkCCV) {
-        return /\d{3}/.test(checkCCV);
-        }
-
-}
+validCVV($cvv)
 
