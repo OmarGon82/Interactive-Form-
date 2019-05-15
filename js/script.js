@@ -131,18 +131,18 @@ function validEmail(email) {
 
 function validActivity(activities) {
     if(activities === 0) {
-        activities.css('border', 'none');
+        $('.activities').css('color', 'red');
         
         return false;
     }
-    activities.css('border', 'none');
+    $('.activities').css('border', 'none');
     return true;
 }
 
 
 function validCreditCardNum(creditCardNum) {
     if(creditCardNum.val() === "" || !(/^(?:\d[ -]*?){13,16}$/.test(creditCardNum.val())) ) {
-        // creditCardNum.css('borderColor', 'red');
+        creditCardNum.css('borderColor', 'red');
         return false;
     }
     creditCardNum.css('borderColor', '#cldeeb');
@@ -182,13 +182,12 @@ function validateForm() {
    if(validEmail($email) == false) {
      isValid = false;
   }
-  // same thing for activity selected
+  
    if (validActivity($activities) == false) {
      isValid = false; 
    }
-   //   IF the credit card is the selected payment:
-     // same thing for credit card 
-    if ($creditCardNum) {
+   
+   if ($creditCardNum) {
         if(validCreditCardNum($creditCardNum) == false) {
             isValid = false;
         }
@@ -202,10 +201,10 @@ function validateForm() {
 
    return isValid;
 }
-validateForm()
+ validateForm()
 
-// $('form').addEventListener("submit", function(e) {
-//     if (validateForm() == false) {
-//       e.preventDefault();
-//    }
-//  });
+$('form').addEventListener("submit", function(e) {
+    if (validateForm() == false) {
+      e.preventDefault();
+   }
+ });
