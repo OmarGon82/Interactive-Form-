@@ -130,19 +130,19 @@ function validEmail(email) {
 
 
 function validActivity(activities) {
-    if(activities.val() === 0) {
-        activities.css('border', 'red');
-     
+    if(activities === 0) {
+        activities.css('border', 'none');
+        
         return false;
     }
-    activities.css('borderColor', '#cldeeb');
+    activities.css('border', 'none');
     return true;
 }
 
 
 function validCreditCardNum(creditCardNum) {
     if(creditCardNum.val() === "" || !(/^(?:\d[ -]*?){13,16}$/.test(creditCardNum.val())) ) {
-        creditCardNum.css('borderColor', 'red');
+        // creditCardNum.css('borderColor', 'red');
         return false;
     }
     creditCardNum.css('borderColor', '#cldeeb');
@@ -172,3 +172,40 @@ function validCVV(cvv) {
 }
 
 
+function validateForm() {
+
+    let isValid = true;
+    if(validName($name) == false) {
+       isValid = false;
+   }
+
+   if(validEmail($email) == false) {
+     isValid = false;
+  }
+  // same thing for activity selected
+   if (validActivity($activities) == false) {
+     isValid = false; 
+   }
+   //   IF the credit card is the selected payment:
+     // same thing for credit card 
+    if ($creditCardNum) {
+        if(validCreditCardNum($creditCardNum) == false) {
+            isValid = false;
+        }
+        if(validZipCode($zipNum) == false ) {
+            isValid = false;
+        }
+        if ( validCVV($cvv) == false) {
+            isValid = false;
+        }
+    }
+
+   return isValid;
+}
+validateForm()
+
+// $('form').addEventListener("submit", function(e) {
+//     if (validateForm() == false) {
+//       e.preventDefault();
+//    }
+//  });
