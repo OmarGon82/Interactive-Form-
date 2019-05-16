@@ -201,9 +201,8 @@ function validateForm() {
 
    return isValid;
 }
- validateForm()
 
-$('form').addEventListener("submit", function(e) {
+document.querySelector("form").addEventListener("submit", function(e) {
     if (validateForm() == false) {
       e.preventDefault();
    }
