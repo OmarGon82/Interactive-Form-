@@ -105,7 +105,6 @@ $("#payment").change( function() {
 
 const $name = $('#name');
 const $email = $('#mail');
-const $activities = total;
 const $creditCardNum = $('#cc-num');
 const $zipNum = $('#zip');
 const $cvv = $('#cvv');
@@ -120,7 +119,7 @@ function validName(name) {
 }
 
 function validEmail(email) {
-    if (email.val() === "" || !(/(\w+@\w+)(.com|.net|.co)/.test(email.val())) ) {
+    if (email.val() === "" || !(/(\w+@\w+)(\.com|\.net|\.co)/ .test(email.val())) ) {
         email.css('borderColor', 'red');
           return false;
       }
@@ -132,12 +131,12 @@ function validEmail(email) {
 function validActivity(activities) {
     if(activities === 0) {
         $('.activities').css('color', 'red');
-        
         return false;
     }
     $('.activities').css('border', 'none');
     return true;
 }
+       
 
 
 function validCreditCardNum(creditCardNum) {
@@ -183,7 +182,7 @@ function validateForm() {
      isValid = false;
   }
   
-   if (validActivity($activities) == false) {
+   if (validActivity(total) == false) {
      isValid = false; 
    }
    
@@ -205,5 +204,6 @@ function validateForm() {
 document.querySelector("form").addEventListener("submit", function(e) {
     if (validateForm() == false) {
       e.preventDefault();
+      
    }
  });
