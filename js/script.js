@@ -50,7 +50,7 @@ $('#design').change(function () {
 $('.activities').append('<div id="total"></div>');
 $('#total').hide();
 
-
+// $('.activities').css("text-decoration","line-through")
 $(".activities").change((e)=>{
     const clicked = e.target;
     const textOfClicked = clicked.parentElement.textContent;
@@ -67,14 +67,15 @@ $(".activities").change((e)=>{
     
     //If the activity is a conflicting activity and wasn't the one clicked
     if(textOfinput.includes(timeDate) && clicked !== $checkboxes[i]){
-        
         //toggle the disabled property.If it was false then it will be true and vice versa.
         $checkboxes[i].disabled = !($checkboxes[i].disabled);
+        if ( $checkboxes[i].disabled == true) {
+       $($checkboxes[i].parentElement).css("textDecoration","line-through");
+        } else {
+            $($checkboxes[i].parentElement).css("textDecoration","none")
         }
     }
-     
-      
-
+    }
 });
 
 
@@ -130,7 +131,7 @@ function validEmail(email) {
 
 function validActivity(activities) {
     if(activities === 0) {
-        $('.activities').css('color', 'red');
+        $('.activities').css('backgroundColor', '#FFB6C1');
         return false;
     }
     $('.activities').css('border', 'none');
