@@ -131,14 +131,14 @@ function validEmail(email) {
 
 function validActivity(activities) {
     if(activities === 0) {
-        $('.activities').css('backgroundColor', '#FFB6C1');
+        $('.activities').css('color', 'red');
         return false;
     }
     $('.activities').css('border', 'none');
     return true;
 }
        
-
+console.log($(".activities legend").text())
 
 function validCreditCardNum(creditCardNum) {
     if(creditCardNum.val() === "" || !(/^(?:\d[ -]*?){13,16}$/.test(creditCardNum.val())) ) {
@@ -205,6 +205,6 @@ function validateForm() {
 document.querySelector("form").addEventListener("submit", function(e) {
     if (validateForm() == false) {
       e.preventDefault();
-      
-   }
+    }
+
  });
