@@ -4,9 +4,15 @@ const $paymentOptions = $("#payment option");
 const $creditCard = $('#credit-card');
 const $payPal = $('fieldset div:nth-child(5)').attr("id", "paypal");
 const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
-const $invalidName = $("<span></span>").text("Can only contain letters a-z in lowercase")
-$invalidName.insertAfter("#name")
-$invalidName.hide();
+$("#name").attr("class", "tooltip")
+const $nameToolTip = $('<div><span class="tooltip" >this is the tool tip</span></div>');
+$nameToolTip.insertBefore("#name");
+// $nameToolTip.hide()
+// const $emialToolTip = $('<span class="tooltip" >this is the tool tip</span>');
+// $email.insertBefore('#mail')
+
+
+
 
 $('#name').focus();
 $('#other-title').hide();
@@ -26,22 +32,20 @@ const $selectTheme = $('#design option').eq(0);
 $('#design').change(function () {
     $('#colors-js-puns').show();
     $selectTheme.toggle();
-    if ( $(this).val() === "js puns") {
-        $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
+    if ($('#design').val() === "js puns") {
         $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').show();
-        $('#color option[value="cornflower blue').attr('selected', true);
+        $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
+        $('#color option[value="cornflowerblue').attr('selected', true);
         $('#color option[value="tomato"]').attr('selected', false);
-        $('#color option[value="no color"]').attr('selected', false);
     } else {
         $('#color').children().hide()
         $selectTheme.hide();
     }
-    if ($(this).val() === "heart js") {
-        $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
+    if ($('#design').val() === "heart js") {
         $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').show();
+        $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
         $('#color option[value="tomato"]').attr('selected',true);
-        $('#color option[value="cornflower blue"]').attr('selected',false);
-        $('#color option[value="no color"]').attr('selected', false);
+        $('#color option[value="cornflowerblue"]').attr('selected',false);
     } else {
         $selectTheme.hide();
     }
@@ -50,7 +54,7 @@ $('#design').change(function () {
 $('.activities').append('<div id="total"></div>');
 $('#total').hide();
 
-// $('.activities').css("text-decoration","line-through")
+
 $(".activities").change((e)=>{
     const clicked = e.target;
     const textOfClicked = clicked.parentElement.textContent;
@@ -138,7 +142,6 @@ function validActivity(activities) {
     return true;
 }
        
-console.log($(".activities legend").text())
 
 function validCreditCardNum(creditCardNum) {
     if(creditCardNum.val() === "" || !(/^(?:\d[ -]*?){13,16}$/.test(creditCardNum.val())) ) {
