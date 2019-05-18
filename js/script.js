@@ -4,9 +4,9 @@ const $paymentOptions = $("#payment option");
 const $creditCard = $('#credit-card');
 const $payPal = $('fieldset div:nth-child(5)').attr("id", "paypal");
 const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
-$("#name").attr("class", "tooltip")
-const $nameToolTip = $('<div><span class="tooltip" >this is the tool tip</span></div>');
-$nameToolTip.insertBefore("#name");
+// $("#name").attr("class", "tooltip")
+// const $nameToolTip = $('<div><span class="tooltip" >this is the tool tip</span></div>');
+// $nameToolTip.insertBefore("#name");
 // $nameToolTip.hide()
 // const $emialToolTip = $('<span class="tooltip" >this is the tool tip</span>');
 // $email.insertBefore('#mail')
