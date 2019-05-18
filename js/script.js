@@ -183,6 +183,7 @@ function validCVV(cvv) {
 // function to check the validity of all input. If everything is valid it will return true
 
 function validateForm() {
+    
 
     let isValid = true;
     if(validName($name) == false) {
@@ -197,7 +198,7 @@ function validateForm() {
      isValid = false; 
    }
    
-   if ($creditCardNum) {
+   if ($("#payment").val() === 'credit card') {
         if(validCreditCardNum($creditCardNum) == false) {
             isValid = false;
         }
@@ -214,22 +215,10 @@ function validateForm() {
 
 // submitting the form and calling the validateForm function.
 document.querySelector("form").addEventListener("submit", function(e) {
-    
     if (validateForm() == false) {
-      e.preventDefault();{
-        if ($("#payment").val() == 'credit card' ) {
-            document.querySelector("form").submit();
-                console.log("credit card")
-            }
-            if ($("#payment").val() == 'paypal') {
-                document.querySelector("form").submit();
-                console.log("paypal")
-            }
-            if ($("#payment").val() == 'bitcoin') {
-                document.querySelector("form").submit();
-                console.log("bitcoin")
-    }}
-
+      e.preventDefault()
+    } else {
+        $('button').submit()
     }
  });
 
