@@ -13,10 +13,11 @@ const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
 
 
 
-
+//set default focus to name input box
 $('#name').focus();
 $('#other-title').hide();
 
+//If the other option is selected in the occupation menu it will show the other input field.
 $('#title').change(function() {
     if($(this).val() === "other") {
         $('#other-title').show();
@@ -26,7 +27,7 @@ $('#title').change(function() {
     }
     });
 
-
+//change event to select desired Tshirt theme and design
 $('#colors-js-puns').hide();
 const $selectTheme = $('#design option').eq(0);
 $('#design').change(function () {
@@ -49,12 +50,14 @@ $('#design').change(function () {
     } else {
         $selectTheme.hide();
     }
-    
 })
+    
+
+// created the div to show the total cost of the selected activties
 $('.activities').append('<div id="total"></div>');
 $('#total').hide();
 
-
+// Change event to select activities and disable conflicting activities 
 $(".activities").change((e)=>{
     const clicked = e.target;
     const textOfClicked = clicked.parentElement.textContent;
@@ -77,16 +80,19 @@ $(".activities").change((e)=>{
        $($checkboxes[i].parentElement).css("textDecoration","line-through");
         } else {
             $($checkboxes[i].parentElement).css("textDecoration","none")
-        }
-    }
-    }
+       }
+     }
+   }
 });
 
-
+// hide the first payment option
 $("#payment").find("option").eq(0).remove();
 
+//hide payment options so the Credit Card option is the default option
 $payPal.hide();
 $bitCoin.hide();
+
+// change event to select payment options
 $("#payment").change( function() {
     $creditCard.show();
     const $paymentMethod = $(this).val();
@@ -108,11 +114,14 @@ $("#payment").change( function() {
 
 })
 
+// capturing the different inputs that need to be validated
 const $name = $('#name');
 const $email = $('#mail');
 const $creditCardNum = $('#cc-num');
 const $zipNum = $('#zip');
 const $cvv = $('#cvv');
+
+// testing input fields for validity
 
 function validName(name) {
     if (name.val() === "" || /\d+/.test(name.val())) {
@@ -132,7 +141,6 @@ function validEmail(email) {
       return true;
 }
 
-
 function validActivity(activities) {
     if(activities === 0) {
         $('.activities').css('color', 'red');
@@ -142,7 +150,6 @@ function validActivity(activities) {
     return true;
 }
        
-
 function validCreditCardNum(creditCardNum) {
     if(creditCardNum.val() === "" || !(/^(?:\d[ -]*?){13,16}$/.test(creditCardNum.val())) ) {
         creditCardNum.css('borderColor', 'red');
@@ -151,9 +158,6 @@ function validCreditCardNum(creditCardNum) {
     creditCardNum.css('borderColor', '#cldeeb');
     return true;
 }
-
-
-    
 
 function validZipCode(zipNum) {
     if(zipNum.val() === "" || !(/^(\d{5})$/g.test(zipNum.val())) ) {
@@ -164,7 +168,6 @@ function validZipCode(zipNum) {
     return true;
 }
 
-
 function validCVV(cvv) {
     if(cvv.val() === "" || !(/^\d{3}$/g.test(cvv.val())) ) {
         cvv.css('borderColor', 'red' );
@@ -174,6 +177,8 @@ function validCVV(cvv) {
     return true;
 }
 
+
+// function to check the validity of all input. If everything is valid it will return true
 
 function validateForm() {
 
@@ -205,9 +210,15 @@ function validateForm() {
    return isValid;
 }
 
+// submitting the form and calling the validateForm function.
 document.querySelector("form").addEventListener("submit", function(e) {
+    
     if (validateForm() == false) {
       e.preventDefault();
     }
-
  });
+
+    
+
+
+
