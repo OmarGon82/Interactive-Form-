@@ -1,3 +1,5 @@
+$('form')[0].reset();
+
 let total = 0;
 const $checkboxes = $(".activities input")
 const $paymentOptions = $("#payment option");
@@ -214,11 +216,22 @@ function validateForm() {
 document.querySelector("form").addEventListener("submit", function(e) {
     
     if (validateForm() == false) {
-      e.preventDefault();
+      e.preventDefault();{
+        if ($("#payment").val() == 'credit card' ) {
+            document.querySelector("form").submit();
+                console.log("credit card")
+            }
+            if ($("#payment").val() == 'paypal') {
+                document.querySelector("form").submit();
+                console.log("paypal")
+            }
+            if ($("#payment").val() == 'bitcoin') {
+                document.querySelector("form").submit();
+                console.log("bitcoin")
+    }}
+
     }
  });
-
-    
 
 
 
