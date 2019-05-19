@@ -5,13 +5,16 @@ const $paymentOptions = $("#payment option");
 const $creditCard = $('#credit-card');
 const $payPal = $('fieldset div:nth-child(5)').attr("id", "paypal");
 const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
-// $("#name").attr("class", "tooltip")
-// const $nameToolTip = $('<div><span class="tooltip" >this is the tool tip</span></div>');
-// $nameToolTip.insertBefore("#name");
-// $nameToolTip.hide()
-// const $emialToolTip = $('<span class="tooltip" >this is the tool tip</span>');
-// $email.insertBefore('#mail')
 
+$("#name").attr("class", "tooltip")
+const $nameToolTip = $('<div ><p class="tooltip" >name tool tip</p></div>');
+$nameToolTip.insertBefore("#name");
+$nameToolTip.hide()
+
+$("#mail").attr("class", "tooltip")
+const $emaillToolTip = $('<div><p class="tooltip" >email tool tip</p></div>');
+$emaillToolTip.insertBefore('#mail')
+$emaillToolTip.hide()
 
 
 //set default focus to name input box
@@ -127,6 +130,7 @@ const $cvv = $('#cvv');
 
 function validName(name) {
     if (name.val() === "" || /\d+/.test(name.val())) {
+        $nameToolTip.show()
       name.css('borderColor', 'red');
         return false;
     } 
@@ -136,6 +140,7 @@ function validName(name) {
 
 function validEmail(email) {
     if (email.val() === "" || !(/(\w+@\w+)(\.com|\.net|\.co)/ .test(email.val())) ) {
+        $emaillToolTip.show()
         email.css('borderColor', 'red');
           return false;
       }
@@ -214,9 +219,11 @@ function validateForm() {
 // function that clears borders once the input is correct
 function clearError() {
     if ($name.val() !== "" || !(/\d+/.test($name.val()))) {
+        $nameToolTip.hide()
         $name.css('borderColor', '');
     }
     if ($email.val() !== "" || /(\w+@\w+)(\.com|\.net|\.co)/.test($email.val()) ) {
+        $emaillToolTip.hide()
         $email.css('borderColor', '');
     }
     if(total !== 0) {
