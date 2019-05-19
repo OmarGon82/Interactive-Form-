@@ -1,4 +1,3 @@
-$('form')[0].reset();
 
 let total = 0;
 const $checkboxes = $(".activities input")
@@ -17,6 +16,7 @@ const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
 
 //set default focus to name input box
 $('#name').focus();
+$('#name').css('borderColor', '')
 $('#other-title').hide();
 
 //If the other option is selected in the occupation menu it will show the other input field.
@@ -129,9 +129,9 @@ function validName(name) {
     if (name.val() === "" || /\d+/.test(name.val())) {
       name.css('borderColor', 'red');
         return false;
-    }
+    } 
     name.css('borderColor', '#cldeeb');
-    return true;
+    return true
 }
 
 function validEmail(email) {
@@ -183,8 +183,6 @@ function validCVV(cvv) {
 // function to check the validity of all input. If everything is valid it will return true
 
 function validateForm() {
-    
-
     let isValid = true;
     if(validName($name) == false) {
        isValid = false;
@@ -213,13 +211,37 @@ function validateForm() {
    return isValid;
 }
 
+// function that clears borders once the input is correct
+function clearError() {
+    if ($name.val() !== "" || !(/\d+/.test($name.val()))) {
+        $name.css('borderColor', '');
+    }
+    if ($email.val() !== "" || /(\w+@\w+)(\.com|\.net|\.co)/.test($email.val()) ) {
+        $email.css('borderColor', '');
+    }
+    if(total !== 0) {
+        $('.activities').css('color', '');
+    }
+    if($creditCardNum.val() !== "" || /^(?:\d[ -]*?){13,16}$/.test($creditCardNum.val()) ) {
+        $creditCardNum.css('borderColor', '');
+    }
+    if($zipNum.val() !== "" || /^(\d{5})$/g.test($zipNum.val()) ) {
+        $zipNum.css('borderColor', '' );
+       
+    }
+    if($cvv.val() !== "" || /^\d{3}$/g.test($cvv.val()) ) {
+        $cvv.css('borderColor', '' );
+    }
+}
 // submitting the form and calling the validateForm function.
 document.querySelector("form").addEventListener("submit", function(e) {
+    clearError()
     if (validateForm() == false) {
+      
       e.preventDefault()
-    } else {
-        $('button').submit()
-    }
+    } 
+  
+
  });
 
 
