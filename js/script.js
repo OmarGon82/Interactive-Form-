@@ -237,8 +237,7 @@ function clearError() {
 document.querySelector("form").addEventListener("submit", function(e) {
     clearError()
     if (validateForm() == false) {
-      
-      e.preventDefault()
+        e.preventDefault()
     } 
   
 
