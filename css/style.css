@@ -179,13 +179,56 @@ button:hover {
 		width: 49%;
 	}
 }
-
-
-
-.tooltip{
-	border-radius: 5px;
-	/* display: none; */
+.tooltip {
 	font-size: 75%;
+	position: relative;
+	text-align: center;
+	left:103%;
+	background: firebrick;
+	width: 35%;
+	padding: 1% 2%;
+	color: white;
+	border-radius: 10%;
+	top: 50px;
+}
+.tooltip:after {
+	top: 50px;
+	border:solid transparent;
+	position: absolute;
+	content: " "; 	
+	border-width: 18px;
+	margin-top: -7px;
+	border-right-color: firebrick;
+	right:98%;
+	top:4px;
+}
+
+.tooltipActivities {
+	font-size: 75%;
+	position: relative;
+	text-align: center;
+	left:45%;
+	background: firebrick;
+	width: 35%;
+	padding: 1% 2%;
+	color: white;
+	border-radius: 10%;
+	top: 75px;
+}
+.tooltipActivities:after {
+	top: 50px;
+	border:solid transparent;
+	position: absolute;
+	content: " "; 	
+	border-width: 18px;
+	margin-top: -7px;
+	border-right-color: firebrick;
+	right:98%;
+	top:4px;
+}
+/* .tooltip{
+	border-radius: 5px;
+	font-size: .75em;
 	text-align: center;
 	position: relative;
 	background:firebrick;
@@ -209,4 +252,4 @@ button:hover {
 	border-right-color: firebrick;
 	border-width: 8px;
 	margin-top: -8px;
-  }
+  } */

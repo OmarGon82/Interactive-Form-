@@ -9,12 +9,17 @@ const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
 // $("#name").attr("class", "tooltip")
 const $nameToolTip = $('<p class="tooltip">must not contain numbers</p>');
 $nameToolTip.insertBefore("#name");
-// $nameToolTip.hide()
+$nameToolTip.hide()
 
 // $("#mail").attr("class", "tooltip")
 const $emaillToolTip = $('<p class="tooltip">must contain "@" symbol</p>');
 $emaillToolTip.insertBefore('#mail')
-// $emaillToolTip.hide()
+$emaillToolTip.hide()
+
+const $activitiesToolTip = $('<p class="tooltipActivities">Please select an activity</p>')
+$activitiesToolTip.insertBefore(".activities");
+$activitiesToolTip.hide()
+
 
 
 //set default focus to name input box
@@ -130,7 +135,7 @@ const $cvv = $('#cvv');
 
 function validName(name) {
     if (name.val() === "" || /\d+/.test(name.val())) {
-        // $nameToolTip.show()
+        $nameToolTip.show()
       name.css('borderColor', 'red');
         return false;
     } 
@@ -140,7 +145,7 @@ function validName(name) {
 
 function validEmail(email) {
     if (email.val() === "" || !(/(\w+@\w+)(\.com|\.net|\.co)/ .test(email.val())) ) {
-        // $emaillToolTip.show()
+        $emaillToolTip.show()
         email.css('borderColor', 'red');
           return false;
       }
@@ -149,6 +154,7 @@ function validEmail(email) {
 }
 
 function validActivity(activities) {
+    $activitiesToolTip.show()
     if(activities === 0) {
         $('.activities').css('color', 'red');
         return false;
@@ -219,15 +225,16 @@ function validateForm() {
 // function that clears borders once the input is correct
 function clearError() {
     if ($name.val() !== "" || !(/\d+/.test($name.val()))) {
-        $nameToolTip.hide()
+        $nameToolTip.hide();
         $name.css('borderColor', '');
     }
     if ($email.val() !== "" || /(\w+@\w+)(\.com|\.net|\.co)/.test($email.val()) ) {
-        $emaillToolTip.hide()
+        $emaillToolTip.hide();
         $email.css('borderColor', '');
     }
     if(total !== 0) {
         $('.activities').css('color', '');
+        $activitiesToolTip.hide();
     }
     if($creditCardNum.val() !== "" || /^(?:\d[ -]*?){13,16}$/.test($creditCardNum.val()) ) {
         $creditCardNum.css('borderColor', '');
