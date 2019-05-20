@@ -180,21 +180,23 @@ button:hover {
 	}
 }
 
- .tooltip div p {
+
+
+.tooltip{
 	border-radius: 5px;
 	/* display: none; */
-	font-size: 1em;
+	font-size: 75%;
 	text-align: center;
-	position: absolute;
-	background: firebrick;
-	left:73%;
-	top: 53%;
-	width: 160px;
-	padding: 7px 10px;
+	position: relative;
+	background:firebrick;
+	left: 102%;
+	top: 55px;
+	width: 200px;
+	padding:7px 10px;
 	color: #fff;
 }
 
-  div p:after {
+.tooltip:after {
 	right: 100%;
 	top: 50%;
 	border: solid transparent;
@@ -204,7 +206,7 @@ button:hover {
 	position: absolute;
 	pointer-events: none;
 	border-color: rgba(136, 183, 213, 0);
-	border-right-color:firebrick;
+	border-right-color: firebrick;
 	border-width: 8px;
 	margin-top: -8px;
   }
