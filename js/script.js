@@ -1,4 +1,4 @@
-
+//Global variables
 let total = 0;
 const $checkboxes = $(".activities input")
 const $paymentOptions = $("#payment option");
@@ -7,7 +7,7 @@ const $payPal = $('fieldset div:nth-child(5)').attr("id", "paypal");
 const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
 
 
-//Adding tool tips
+//Tooltips for input and credit card validation
 const $nameToolTip = $('<p class="tooltip">Required field</p>');
 $nameToolTip.insertBefore("#name");
 $nameToolTip.hide()
@@ -32,16 +32,12 @@ const $cvvToolTip =  $('<p class="TooltipCC">Required field</p>')
 $cvvToolTip.insertBefore("#cvv")
 $cvvToolTip.hide()
 
-  
-
-
-
-//set default focus to name input box
+//set default focus to name input field
 $('#name').focus();
 $('#name').css('borderColor', '')
 $('#other-title').hide();
 
-//If the other option is selected in the occupation menu it will show the other input field.
+//if the other option is selected in the occupation menu the other input field will show
 $('#title').change(function() {
     if($(this).val() === "other") {
         $('#other-title').show();
@@ -51,7 +47,7 @@ $('#title').change(function() {
     }
     });
 
-//change event to select desired Tshirt theme and design
+//change event to select desired T-shirt theme and design
 $('#colors-js-puns').hide();
 const $selectTheme = $('#design option').eq(0);
 $('#design').change(function () {
@@ -77,11 +73,11 @@ $('#design').change(function () {
 })
     
 
-// created the div to show the total cost of the selected activties
+//div to show the total cost of the selected activties
 $('.activities').append('<div id="total"></div>');
 $('#total').hide();
 
-// Change event to select activities and disable conflicting activities 
+//change event to select activities and disable conflicting activities 
 $(".activities").change((e)=>{
     const clicked = e.target;
     const textOfClicked = clicked.parentElement.textContent;
@@ -138,14 +134,14 @@ $("#payment").change( function() {
 
 })
 
-// capturing the different inputs that need to be validated
+// validation inputs
 const $name = $('#name');
 const $email = $('#mail');
 const $creditCardNum = $('#cc-num');
 const $zipNum = $('#zip');
 const $cvv = $('#cvv');
 
-// testing input fields for validity
+//checking input fields for validity and showing tool tips
 function validName(name) {
     if (name.val() === "" || /\d+/.test(name.val())) {
          $nameToolTip.text("field is required").show()
@@ -208,10 +204,7 @@ function validCVV(cvv) {
     return true;
 }
 
-
-
 // function to check the validity of all input. If everything is valid it will return true
-
 function validateForm() {
     let isValid = true;
     if(validName($name) == false) {
@@ -241,7 +234,7 @@ function validateForm() {
    return isValid;
 }
 
-// function that clears borders once the input is correct
+// function that clears red border and toop tip if input is correct 
 function clearError() {
     if ($name.val() !== "" || !(/\d+/.test($name.val()))) {
         $nameToolTip.hide();
@@ -269,29 +262,35 @@ function clearError() {
         $cvv.css('borderColor', '' );
     }
 }
-// submitting the form and calling the validateForm function.
+
+//keyup functions for tooltips
+$("#name").on('keyup', function(){
+    $nameToolTip.text("Only letters and spaces").show()
+});
+$("#mail").on('keyup', function(){
+    $emaillToolTip.text("example123@email.com").css("font-size","60%").show()
+});
+$("#cc-num").on('keyup', function(){
+    $creditCardToolTip.text("Must be between 13-15 digits").css("color","green").show()
+});
+$("#zip").on('keyup', function(){
+    $zipToolTip.text("Must be 5 digits").css("color","green").show()
+});
+$("#cvv").on('keyup', function(){
+    $cvvToolTip.text("Must be 3 digits").css("color","green").show()
+});
+
+//submitting the form, clearing errors and checking for validity
 document.querySelector("form").addEventListener("submit", function(e) {
     clearError()
     if (validateForm() == false) {
         e.preventDefault()
     } 
 });
+
+
   
-//keyup functions
-// document.querySelector('#name').addEventListener('keyup', validName);
-// document.querySelector('#mail').addEventListener('keyup', validEmail);
-$("#name").on('keyup', function(){
-    $nameToolTip.text("Only letters and spaces").css("background","green").show()
-});
-$("#mail").on('keyup', function(){
-    $emaillToolTip.text("example123@email.com").css({"font-size":"60%","background":"green"}).show()
-});
-$("#cc-num").on('keyup', function(){
-    $creditCardToolTip.text("Must between 13-15 digits").show()
-});
-$("#zip").on('keyup', function(){
-    $zipToolTip.text("Must 5 digits").show()
-});
-$("#cvv").on('keyup', function(){
-    $cvvToolTip.text("Must be 3 digits").show()
-});
+
+
+
+  
