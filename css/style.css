@@ -197,7 +197,7 @@ button:hover {
 	position: absolute;
 	content: " "; 	
 	border-width: 18px;
-	margin-top: -7px;
+	margin-top: -9px;
 	border-right-color: firebrick;
 	right:98%;
 	top:4px;
@@ -225,6 +225,11 @@ button:hover {
 	border-right-color: firebrick;
 	right:98%;
 	top:4px;
+}
+
+.TooltipCC {
+	color: firebrick;
+	font-size: 80%
 }
 /* .tooltip{
 	border-radius: 5px;

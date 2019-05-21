@@ -6,19 +6,33 @@ const $creditCard = $('#credit-card');
 const $payPal = $('fieldset div:nth-child(5)').attr("id", "paypal");
 const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
 
-// $("#name").attr("class", "tooltip")
-const $nameToolTip = $('<p class="tooltip">must not contain numbers</p>');
+
+//Adding tool tips
+const $nameToolTip = $('<p class="tooltip">Required field</p>');
 $nameToolTip.insertBefore("#name");
 $nameToolTip.hide()
 
-// $("#mail").attr("class", "tooltip")
-const $emaillToolTip = $('<p class="tooltip">must contain "@" symbol</p>');
+const $emaillToolTip = $('<p class="tooltip">Required field</p>');
 $emaillToolTip.insertBefore('#mail')
 $emaillToolTip.hide()
 
-const $activitiesToolTip = $('<p class="tooltipActivities">Please select an activity</p>')
+const $activitiesToolTip = $('<p class="tooltipActivities">Required field</p>')
 $activitiesToolTip.insertBefore(".activities");
 $activitiesToolTip.hide()
+
+const $creditCardToolTip =  $('<p class="TooltipCC">Required field</p>')
+$creditCardToolTip.insertBefore("#cc-num")
+$creditCardToolTip.hide()
+
+const $zipToolTip =  $('<p class="TooltipCC">Required field</p>')
+$zipToolTip.insertBefore("#zip")
+$zipToolTip.hide()
+
+const $cvvToolTip =  $('<p class="TooltipCC">Required field</p>')
+$cvvToolTip.insertBefore("#cvv")
+$cvvToolTip.hide()
+
+  
 
 
 
@@ -132,15 +146,15 @@ const $zipNum = $('#zip');
 const $cvv = $('#cvv');
 
 // testing input fields for validity
-
 function validName(name) {
     if (name.val() === "" || /\d+/.test(name.val())) {
-        $nameToolTip.show()
-      name.css('borderColor', 'red');
+         $nameToolTip.text("field is required").show()
+        name.css('borderColor', 'red');
         return false;
-    } 
-    name.css('borderColor', '#cldeeb');
-    return true
+    }
+    
+        name.css('borderColor', '#cldeeb');
+         return true
 }
 
 function validEmail(email) {
@@ -154,8 +168,9 @@ function validEmail(email) {
 }
 
 function validActivity(activities) {
-    $activitiesToolTip.show()
+     
     if(activities === 0) {
+        $activitiesToolTip.show()
         $('.activities').css('color', 'red');
         return false;
     }
@@ -165,6 +180,7 @@ function validActivity(activities) {
        
 function validCreditCardNum(creditCardNum) {
     if(creditCardNum.val() === "" || !(/^(?:\d[ -]*?){13,16}$/.test(creditCardNum.val())) ) {
+        $creditCardToolTip.show()
         creditCardNum.css('borderColor', 'red');
         return false;
     }
@@ -174,6 +190,7 @@ function validCreditCardNum(creditCardNum) {
 
 function validZipCode(zipNum) {
     if(zipNum.val() === "" || !(/^(\d{5})$/g.test(zipNum.val())) ) {
+        $zipToolTip.show()
         zipNum.css('borderColor', 'red' );
         return false;
     }
@@ -183,12 +200,14 @@ function validZipCode(zipNum) {
 
 function validCVV(cvv) {
     if(cvv.val() === "" || !(/^\d{3}$/g.test(cvv.val())) ) {
+        $cvvToolTip.show()
         cvv.css('borderColor', 'red' );
         return false;
     }
     cvv.css('borderColor', '#cldeeb');
     return true;
 }
+
 
 
 // function to check the validity of all input. If everything is valid it will return true
@@ -237,13 +256,16 @@ function clearError() {
         $activitiesToolTip.hide();
     }
     if($creditCardNum.val() !== "" || /^(?:\d[ -]*?){13,16}$/.test($creditCardNum.val()) ) {
+        $creditCardToolTip.hide()
         $creditCardNum.css('borderColor', '');
     }
     if($zipNum.val() !== "" || /^(\d{5})$/g.test($zipNum.val()) ) {
+        $zipToolTip.hide()
         $zipNum.css('borderColor', '' );
        
     }
     if($cvv.val() !== "" || /^\d{3}$/g.test($cvv.val()) ) {
+        $cvvToolTip.hide()
         $cvv.css('borderColor', '' );
     }
 }
@@ -253,9 +275,23 @@ document.querySelector("form").addEventListener("submit", function(e) {
     if (validateForm() == false) {
         e.preventDefault()
     } 
+});
   
-
- });
-
-
-
+//keyup functions
+// document.querySelector('#name').addEventListener('keyup', validName);
+// document.querySelector('#mail').addEventListener('keyup', validEmail);
+$("#name").on('keyup', function(){
+    $nameToolTip.text("Only letters and spaces").css("background","green").show()
+});
+$("#mail").on('keyup', function(){
+    $emaillToolTip.text("example123@email.com").css({"font-size":"60%","background":"green"}).show()
+});
+$("#cc-num").on('keyup', function(){
+    $creditCardToolTip.text("Must between 13-15 digits").show()
+});
+$("#zip").on('keyup', function(){
+    $zipToolTip.text("Must 5 digits").show()
+});
+$("#cvv").on('keyup', function(){
+    $cvvToolTip.text("Must be 3 digits").show()
+});
