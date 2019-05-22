@@ -1,4 +1,4 @@
-//Global variables
+//global variables
 let total = 0;
 const $checkboxes = $(".activities input")
 const $paymentOptions = $("#payment option");
@@ -141,7 +141,7 @@ const $creditCardNum = $('#cc-num');
 const $zipNum = $('#zip');
 const $cvv = $('#cvv');
 
-//regex valdiation /\d+/;
+//regex valdiation 
 const regexName =  /[\d+\!\"#\$%&\(\)\=\/*-+\|@`\']/
 const regexEmail = /(\w+@\w+)(\.com|\.net|\.co)/;
 const regexCreditCard = /^(?:\d[ -]*?){13,16}$/;
@@ -151,7 +151,7 @@ const regexCVV = /^\d{3}$/;
 //checking input fields for validity and showing tool tips
 function validName(name) {
     if (name.val() === "" || regexName.test(name.val())) {
-         $nameToolTip.text("field is required").show()
+         $nameToolTip.show()
         name.css('borderColor', 'red');
         return false;
     }
@@ -274,6 +274,7 @@ function validateForm() {
      if (  regexName.test($name.val()) ){
      $nameToolTip.text("Only letters and spaces").show()
     } else {
+        $name.css('borderColor', '');
         $nameToolTip.hide();
     }
 });
@@ -281,6 +282,7 @@ function validateForm() {
      if ( !(regexEmail.test($email.val())) )  {
      $emaillToolTip.text("example123@email.com").css("font-size","60%").show()
     } else {
+        $email.css('borderColor', '');
         $emaillToolTip.hide()
     }
  });
@@ -288,6 +290,7 @@ function validateForm() {
      if ( !(regexCreditCard.test($creditCardNum.val())) ){
      $creditCardToolTip.text("Must be between 13-15 digits").css("color","green").show()
     } else {
+        $creditCardNum.css('borderColor', '');
         $creditCardToolTip.hide()
     }
  });
@@ -295,6 +298,7 @@ function validateForm() {
      if ( !(regexZip.test($zipNum.val())) ) {
      $zipToolTip.text("Must be 5 digits").css("color","green").show()
     } else {
+        $zipNum.css('borderColor', '')
         $zipToolTip.hide()
     }
  });
@@ -302,6 +306,7 @@ function validateForm() {
      if (!(regexCVV.test($cvv.val()))  ) {
      $cvvToolTip.text("Must be 3 digits").css("color","green").show()
     } else {
+        $cvv.css('borderColor', '')
         $cvvToolTip.hide();
     }
  });
