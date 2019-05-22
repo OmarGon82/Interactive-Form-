@@ -141,8 +141,8 @@ const $creditCardNum = $('#cc-num');
 const $zipNum = $('#zip');
 const $cvv = $('#cvv');
 
-//regex valdiation
-const regexName =  /\d+/;
+//regex valdiation /\d+/;
+const regexName =  /[\d+\!\"#\$%&\(\)\=\/*-+\|@`\']/
 const regexEmail = /(\w+@\w+)(\.com|\.net|\.co)/;
 const regexCreditCard = /^(?:\d[ -]*?){13,16}$/;
 const regexZip = /^(\d{5})$/;
