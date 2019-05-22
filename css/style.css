@@ -231,30 +231,3 @@ button:hover {
 	color: firebrick;
 	font-size: 80%
 }
-/* .tooltip{
-	border-radius: 5px;
-	font-size: .75em;
-	text-align: center;
-	position: relative;
-	background:firebrick;
-	left: 102%;
-	top: 55px;
-	width: 200px;
-	padding:7px 10px;
-	color: #fff;
-}
-
-.tooltip:after {
-	right: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: rgba(136, 183, 213, 0);
-	border-right-color: firebrick;
-	border-width: 8px;
-	margin-top: -8px;
-  } */

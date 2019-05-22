@@ -141,9 +141,16 @@ const $creditCardNum = $('#cc-num');
 const $zipNum = $('#zip');
 const $cvv = $('#cvv');
 
+//regex valdiation
+const regexName =  /\d+/;
+const regexEmail = /(\w+@\w+)(\.com|\.net|\.co)/;
+const regexCreditCard = /^(?:\d[ -]*?){13,16}$/;
+const regexZip = /^(\d{5})$/;
+const regexCVV = /^\d{3}$/;
+
 //checking input fields for validity and showing tool tips
 function validName(name) {
-    if (name.val() === "" || /\d+/.test(name.val())) {
+    if (name.val() === "" || regexName.test(name.val())) {
          $nameToolTip.text("field is required").show()
         name.css('borderColor', 'red');
         return false;
@@ -154,7 +161,7 @@ function validName(name) {
 }
 
 function validEmail(email) {
-    if (email.val() === "" || !(/(\w+@\w+)(\.com|\.net|\.co)/ .test(email.val())) ) {
+    if (email.val() === "" || !(regexEmail.test(email.val())) ) {
         $emaillToolTip.show()
         email.css('borderColor', 'red');
           return false;
@@ -175,7 +182,7 @@ function validActivity(activities) {
 }
        
 function validCreditCardNum(creditCardNum) {
-    if(creditCardNum.val() === "" || !(/^(?:\d[ -]*?){13,16}$/.test(creditCardNum.val())) ) {
+    if(creditCardNum.val() === "" || !(regexCreditCard.test(creditCardNum.val())) ) {
         $creditCardToolTip.show()
         creditCardNum.css('borderColor', 'red');
         return false;
@@ -185,7 +192,7 @@ function validCreditCardNum(creditCardNum) {
 }
 
 function validZipCode(zipNum) {
-    if(zipNum.val() === "" || !(/^(\d{5})$/g.test(zipNum.val())) ) {
+    if(zipNum.val() === "" || !(regexZip.test(zipNum.val())) ) {
         $zipToolTip.show()
         zipNum.css('borderColor', 'red' );
         return false;
@@ -195,7 +202,7 @@ function validZipCode(zipNum) {
 }
 
 function validCVV(cvv) {
-    if(cvv.val() === "" || !(/^\d{3}$/g.test(cvv.val())) ) {
+    if(cvv.val() === "" || !(regexCVV.test(cvv.val())) ) {
         $cvvToolTip.show()
         cvv.css('borderColor', 'red' );
         return false;
@@ -230,63 +237,83 @@ function validateForm() {
             isValid = false;
         }
     }
-
-   return isValid;
-}
-
-// function that clears red border and toop tip if input is correct 
-function clearError() {
-    if ($name.val() !== "" || !(/\d+/.test($name.val()))) {
+    return isValid;
+ }
+ 
+ // function that clears red border and toop tip if input is correct 
+ function clearError() {
+     if ($name.val() !== "" || !(regexName.test($name.val()))) {
+         $nameToolTip.hide();
+         $name.css('borderColor', '');
+     }
+     if ($email.val() !== "" || regexEmail.test($email.val()) ) {
+         $emaillToolTip.hide();
+         $email.css('borderColor', '');
+     }
+     if(total !== 0) {
+         $('.activities').css('color', '');
+         $activitiesToolTip.hide();
+     }
+     if($creditCardNum.val() !== "" || regexCreditCard.test($creditCardNum.val()) ) {
+         $creditCardToolTip.hide()
+         $creditCardNum.css('borderColor', '');
+     }
+     if($zipNum.val() !== "" || regexZip.test($zipNum.val()) ) {
+         $zipToolTip.hide()
+         $zipNum.css('borderColor', '' );
+        
+     }
+     if($cvv.val() !== "" || regexCVV.test($cvv.val()) ) {
+         $cvvToolTip.hide()
+         $cvv.css('borderColor', '' );
+     }
+ }
+ 
+ //keyup functions for tooltips
+ $("#name").on('keyup', function(){
+     if (  regexName.test($name.val()) ){
+     $nameToolTip.text("Only letters and spaces").show()
+    } else {
         $nameToolTip.hide();
-        $name.css('borderColor', '');
     }
-    if ($email.val() !== "" || /(\w+@\w+)(\.com|\.net|\.co)/.test($email.val()) ) {
-        $emaillToolTip.hide();
-        $email.css('borderColor', '');
+});
+ $("#mail").on('keyup', function(){
+     if ( !(regexEmail.test($email.val())) )  {
+     $emaillToolTip.text("example123@email.com").css("font-size","60%").show()
+    } else {
+        $emaillToolTip.hide()
     }
-    if(total !== 0) {
-        $('.activities').css('color', '');
-        $activitiesToolTip.hide();
-    }
-    if($creditCardNum.val() !== "" || /^(?:\d[ -]*?){13,16}$/.test($creditCardNum.val()) ) {
+ });
+ $("#cc-num").on('keyup', function(){
+     if ( !(regexCreditCard.test($creditCardNum.val())) ){
+     $creditCardToolTip.text("Must be between 13-15 digits").css("color","green").show()
+    } else {
         $creditCardToolTip.hide()
-        $creditCardNum.css('borderColor', '');
     }
-    if($zipNum.val() !== "" || /^(\d{5})$/g.test($zipNum.val()) ) {
+ });
+ $("#zip").on('keyup', function(){
+     if ( !(regexZip.test($zipNum.val())) ) {
+     $zipToolTip.text("Must be 5 digits").css("color","green").show()
+    } else {
         $zipToolTip.hide()
-        $zipNum.css('borderColor', '' );
-       
     }
-    if($cvv.val() !== "" || /^\d{3}$/g.test($cvv.val()) ) {
-        $cvvToolTip.hide()
-        $cvv.css('borderColor', '' );
+ });
+ $("#cvv").on('keyup', function(){
+     if (!(regexCVV.test($cvv.val()))  ) {
+     $cvvToolTip.text("Must be 3 digits").css("color","green").show()
+    } else {
+        $cvvToolTip.hide();
     }
-}
+ });
 
-//keyup functions for tooltips
-$("#name").on('keyup', function(){
-    $nameToolTip.text("Only letters and spaces").show()
-});
-$("#mail").on('keyup', function(){
-    $emaillToolTip.text("example123@email.com").css("font-size","60%").show()
-});
-$("#cc-num").on('keyup', function(){
-    $creditCardToolTip.text("Must be between 13-15 digits").css("color","green").show()
-});
-$("#zip").on('keyup', function(){
-    $zipToolTip.text("Must be 5 digits").css("color","green").show()
-});
-$("#cvv").on('keyup', function(){
-    $cvvToolTip.text("Must be 3 digits").css("color","green").show()
-});
+ //submitting the form, clearing errors and checking for validity
+ document.querySelector("form").addEventListener("submit", function(e) {
+     clearError()
+     if (validateForm() == false) {
+         e.preventDefault()
+     } 
+ });
 
-//submitting the form, clearing errors and checking for validity
-document.querySelector("form").addEventListener("submit", function(e) {
-    clearError()
-    if (validateForm() == false) {
-        e.preventDefault()
-    } 
-});
 
 
   
