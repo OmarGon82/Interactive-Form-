@@ -1,6 +1,6 @@
 //global variables
 let total = 0;
-const $checkboxes = $(".activities input")
+const $checkboxes = $(".activities input");
 const $paymentOptions = $("#payment option");
 const $creditCard = $('#credit-card');
 const $payPal = $('fieldset div:nth-child(5)').attr("id", "paypal");
@@ -10,31 +10,31 @@ const $bitCoin = $('fieldset div:nth-child(6)').attr("id", "bitcoin");
 //Tooltips for input and credit card validation
 const $nameToolTip = $('<p class="tooltip">Required field</p>');
 $nameToolTip.insertBefore("#name");
-$nameToolTip.hide()
+$nameToolTip.hide();
 
 const $emaillToolTip = $('<p class="tooltip">Required field</p>');
-$emaillToolTip.insertBefore('#mail')
-$emaillToolTip.hide()
+$emaillToolTip.insertBefore('#mail');
+$emaillToolTip.hide();
 
-const $activitiesToolTip = $('<p class="tooltipActivities">Required field</p>')
+const $activitiesToolTip = $('<p class="tooltipActivities">Required field</p>');
 $activitiesToolTip.insertBefore(".activities");
-$activitiesToolTip.hide()
+$activitiesToolTip.hide();
 
-const $creditCardToolTip =  $('<p class="TooltipCC">Required field</p>')
-$creditCardToolTip.insertBefore("#cc-num")
-$creditCardToolTip.hide()
+const $creditCardToolTip =  $('<p class="TooltipCC">Required field</p>');
+$creditCardToolTip.insertBefore("#cc-num");
+$creditCardToolTip.hide();
 
-const $zipToolTip =  $('<p class="TooltipCC">Required field</p>')
-$zipToolTip.insertBefore("#zip")
-$zipToolTip.hide()
+const $zipToolTip =  $('<p class="TooltipCC">Required field</p>');
+$zipToolTip.insertBefore("#zip");
+$zipToolTip.hide();
 
-const $cvvToolTip =  $('<p class="TooltipCC">Required field</p>')
-$cvvToolTip.insertBefore("#cvv")
-$cvvToolTip.hide()
+const $cvvToolTip =  $('<p class="TooltipCC">Required field</p>');
+$cvvToolTip.insertBefore("#cvv");
+$cvvToolTip.hide();
 
 //set default focus to name input field
 $('#name').focus();
-$('#name').css('borderColor', '')
+$('#name').css('borderColor', '');
 $('#other-title').hide();
 
 //if the other option is selected in the occupation menu the other input field will show
@@ -82,7 +82,7 @@ $(".activities").change((e)=>{
     const clicked = e.target;
     const textOfClicked = clicked.parentElement.textContent;
     const dollarAmount = textOfClicked.match(/\d{3}/);
-    const cost = parseInt(dollarAmount)
+    const cost = parseInt(dollarAmount);
     const timeDate = textOfClicked.match(/\w+\s\d\w{2}-\d\d?\w{2}/);
     
     //If the property was checked add the cost, else cost times -1(its the same as subtracting from the cost)
@@ -99,7 +99,7 @@ $(".activities").change((e)=>{
         if ( $checkboxes[i].disabled == true) {
        $($checkboxes[i].parentElement).css("textDecoration","line-through");
         } else {
-            $($checkboxes[i].parentElement).css("textDecoration","none")
+            $($checkboxes[i].parentElement).css("textDecoration","none");
        }
      }
    }
@@ -157,12 +157,12 @@ function validName(name) {
     }
     
         name.css('borderColor', '#cldeeb');
-         return true
+         return true;
 }
 
 function validEmail(email) {
     if (email.val() === "" || !(regexEmail.test(email.val())) ) {
-        $emaillToolTip.show()
+        $emaillToolTip.show();
         email.css('borderColor', 'red');
           return false;
       }
@@ -183,7 +183,7 @@ function validActivity(activities) {
        
 function validCreditCardNum(creditCardNum) {
     if(creditCardNum.val() === "" || !(regexCreditCard.test(creditCardNum.val())) ) {
-        $creditCardToolTip.show()
+        $creditCardToolTip.show();
         creditCardNum.css('borderColor', 'red');
         return false;
     }
@@ -193,7 +193,7 @@ function validCreditCardNum(creditCardNum) {
 
 function validZipCode(zipNum) {
     if(zipNum.val() === "" || !(regexZip.test(zipNum.val())) ) {
-        $zipToolTip.show()
+        $zipToolTip.show();
         zipNum.css('borderColor', 'red' );
         return false;
     }
@@ -203,7 +203,7 @@ function validZipCode(zipNum) {
 
 function validCVV(cvv) {
     if(cvv.val() === "" || !(regexCVV.test(cvv.val())) ) {
-        $cvvToolTip.show()
+        $cvvToolTip.show();
         cvv.css('borderColor', 'red' );
         return false;
     }
@@ -255,16 +255,16 @@ function validateForm() {
          $activitiesToolTip.hide();
      }
      if($creditCardNum.val() !== "" || regexCreditCard.test($creditCardNum.val()) ) {
-         $creditCardToolTip.hide()
+         $creditCardToolTip.hide();
          $creditCardNum.css('borderColor', '');
      }
      if($zipNum.val() !== "" || regexZip.test($zipNum.val()) ) {
-         $zipToolTip.hide()
+         $zipToolTip.hide();
          $zipNum.css('borderColor', '' );
         
      }
      if($cvv.val() !== "" || regexCVV.test($cvv.val()) ) {
-         $cvvToolTip.hide()
+         $cvvToolTip.hide();
          $cvv.css('borderColor', '' );
      }
  }
@@ -283,7 +283,7 @@ function validateForm() {
      $emaillToolTip.text("example123@email.com").css("font-size","60%").show()
     } else {
         $email.css('borderColor', '');
-        $emaillToolTip.hide()
+        $emaillToolTip.hide();
     }
  });
  $("#cc-num").on('keyup', function(){
@@ -291,31 +291,31 @@ function validateForm() {
      $creditCardToolTip.text("Must be between 13-16 digits").css("color","green").show()
     } else {
         $creditCardNum.css('borderColor', '');
-        $creditCardToolTip.hide()
+        $creditCardToolTip.hide();
     }
  });
  $("#zip").on('keyup', function(){
      if ( !(regexZip.test($zipNum.val())) ) {
-     $zipToolTip.text("Must be 5 digits").css("color","green").show()
+     $zipToolTip.text("Must be 5 digits").css("color","green").show();
     } else {
-        $zipNum.css('borderColor', '')
-        $zipToolTip.hide()
+        $zipNum.css('borderColor', '');
+        $zipToolTip.hide();
     }
  });
  $("#cvv").on('keyup', function(){
      if (!(regexCVV.test($cvv.val()))  ) {
-     $cvvToolTip.text("Must be 3 digits").css("color","green").show()
+     $cvvToolTip.text("Must be 3 digits").css("color","green").show();
     } else {
-        $cvv.css('borderColor', '')
+        $cvv.css('borderColor', '');
         $cvvToolTip.hide();
     }
  });
 
  //submitting the form, clearing errors and checking for validity
  document.querySelector("form").addEventListener("submit", function(e) {
-     clearError()
+     clearError();
      if (validateForm() == false) {
-         e.preventDefault()
+         e.preventDefault();
      } 
  });
 
