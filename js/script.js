@@ -87,7 +87,7 @@ $(".activities").change((e)=>{
     
     //If the property was checked add the cost, else cost times -1(its the same as subtracting from the cost)
     total += $(clicked).prop("checked") ? cost : cost * -1;
-    $('#total').html(`total:$${total}`).show();
+    $('#total').html(`total:$${total}`).show().css("color", "black");
 
     for (let i = 0; i < $checkboxes.length; i++) {
     const textOfinput = $checkboxes[i].parentElement.textContent
@@ -288,7 +288,7 @@ function validateForm() {
  });
  $("#cc-num").on('keyup', function(){
      if ( !(regexCreditCard.test($creditCardNum.val())) ){
-     $creditCardToolTip.text("Must be between 13-15 digits").css("color","green").show()
+     $creditCardToolTip.text("Must be between 13-16 digits").css("color","green").show()
     } else {
         $creditCardNum.css('borderColor', '');
         $creditCardToolTip.hide()
